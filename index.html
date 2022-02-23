@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Assignment 1</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <style type="text/css">
+	
+
+.content-table {
+  border-collapse: collapse; 
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-table thead tr {
+  background-color: #babdc2;
+  color: #251919;
+  text-align: left;
+  font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+  padding: 12px 15px;
+}
+
+.content-table tbody tr {
+  border-bottom: 1px solid #803434;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #795656;
+}
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+
+
+	</style>
+</head>
+<body>
+	<h5 style="color: black; text-align: left; font-size: medium;" id="Timestamp"> </h5>
+
+	<div >
+
+		<table id="divMsg" class="content-table" >
+		<thead>
+			<tr>
+				<td> Metric</td>
+				<th scope="col">West</th>
+				<th scope="col">National</th>
+				<th scope="col">East</th>
+				<th scope="col">Central</th>
+				<th scope="col">South</th>
+				<th scope="col">North</th>
+			</tr>
+		</thead>
+
+	
+
+		</table>
+
+
+	</div>
+
+	<script type="text/javascript">
+		const date3 = new Date();
+		document.getElementById("Timestamp").innerHTML = "Last Updated " + date3.toString();
+
+		
+		fetch('https://api.data.gov.sg/v1/environment/psi', { 
+			method: 'GET'
+		})
+		.then(function(response) { return response.json(); })
+		.then(function(json) {
+			Object.keys(json.items[0].readings).forEach(key => {
+				document.getElementById("divMsg").innerHTML += "<tr>" + "<th scope='row'>" + key + "</th>" + "<td>"+ json.items[0].readings[key].west + "</td>" + "<td>"+ json.items[0].readings[key].national + "</td>" + "<td>"+ json.items[0].readings[key].east + "</td>"  + "<td>"+ json.items[0].readings[key].central + "</td>"  + "<td>"+ json.items[0].readings[key].south + "</td>"  + "<td>"+ json.items[0].readings[key].north + "</td>" + "</tr>"
+			});
+
+
+		});
+
+
+	</script>
+
+<p> <font size = 2>Done by Ng xun long </font><br>
+</p>
+
+</body>
+</html>
