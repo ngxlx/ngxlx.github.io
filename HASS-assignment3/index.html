@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<HTML>
+   <HEAD>
+      <TITLE>Assignment 3</TITLE>
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""/>
+       <!-- Make sure you put this AFTER Leaflet's CSS -->
+       <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+        <style>
+        #sgmap { height: 500px; 
+        }
+        h2 {
+    margin: auto;
+    color: rgb(59, 71, 71);
+    width: 750px;
+    text-align: justify;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:20px;
+    text-align: center;
+    }
+        p {
+    margin: auto;
+    width: 750px;
+    text-align: justify;
+    font-family: Arial, Helvetica, sans-serif;
+    }
+    </style>
+  </head>
+    </style>
+   </HEAD>
+   <BODY>
+    <h1 style="text-align: center;">Assignment 3</h1> 
+    <h2 style="text-align: center;">East vs West</h2> 
+   
+    <p><br><br>I'm interested in finding out the most expensive resale price of each flat types from the regional centre of east side (tampines) and west side (jurong east) <br><br> </p>
+    <div id="sgmap"></div>
+
+
+    <script>
+        const map = L.map('sgmap').setView([1.3521, 103.8198], 11.5);
+
+        const attribution = 
+           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+        const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+        const tiles = L.tileLayer(tileUrl, {attribution});
+        tiles.addTo(map);
+    
+        // Tampines
+        //<!-- 4 room -->
+        var leafIcon = L.icon({
+            iconUrl: 'redb.png',
+            iconSize:     [32, 37], // size of the icon
+            iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
+            popupAnchor:  [0, -30] // point from which the popup should open relative to the iconAnchor
+            
+        });
+        var photoImgtamp4 = '<img src="tamp4rm.jpg" height="200px" width="200px"/>';
+        L.marker([1.35727685283, 103.940103373], {icon: leafIcon}).addTo(map).bindPopup("<h1>4 ROOM FLAT </h1> <p> Blk 519B Tampines Central 8<br> Resale value of $720,000</br>Remaining lease of 91 years 06 months </p>"+photoImgtamp4);
+
+          //<!-- executive -->
+          var leafIcon = L.icon({
+            iconUrl: 'blueb.png',
+            iconSize:     [32, 37], // size of the icon
+            iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
+            popupAnchor:  [0, -30] // point from which the popup should open relative to the iconAnchor
+            
+        });
+          var photoImgtampexe= '<img src="tampexe.jpg" height="200px" width="200px"/>';  
+        L.marker([1.35154, 103.94486], {icon: leafIcon}).addTo(map).bindPopup("<h1>EXECUTIVE FLAT </h1> <p> Blk 156 Tampines Street 12<br> Resale value of $998,000</br>Remaining lease of 61 years 09 months </p>"+photoImgtampexe);
+       
+        //<!-- multigen -->
+        var leafIcon = L.icon({
+            iconUrl: 'yellowb.png',
+            iconSize:     [32, 37], // size of the icon
+            iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
+            popupAnchor:  [0, -30] // point from which the popup should open relative to the iconAnchor
+            
+        });
+        var photoImgtampmulti= '<img src="tampmulti.jpg" height="200px" width="200px"/>';
+        L.marker([ 1.358438179749161, 103.9549402404288], {icon: leafIcon}).addTo(map).bindPopup("<h1>MULTI-GENERATION FLAT </h1> <p> Blk 460 Tampines Street 42<br> Resale value of $990,000</br>Remaining lease of 67 years 11 months </p>"+photoImgtampmulti);
+       
+          //<!-- 5 room -->
+          var leafIcon = L.icon({
+            iconUrl: 'purpleb.png',
+            iconSize:     [32, 37], // size of the icon
+            iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
+            popupAnchor:  [0, -30] // point from which the popup should open relative to the iconAnchor
+            
+        });
+        var photoImgtamp5rm= '<img src="tamp5rm.jpg" height="200px" width="200px"/>';
+        L.marker([1.356366038117789, 103.93962014042881], {icon: leafIcon}).addTo(map).bindPopup("<h1>5 ROOM FLAT </h1> <p> Blk 519D Tampines Central 8<br> Resale value of $900,000</br>Remaining lease of 91 years 05 months </p>"+photoImgtamp5rm);
+      
+       //<!-- 3 room -->
+       var leafIcon = L.icon({
+            iconUrl: 'orangeb.png',
+            iconSize:     [32, 37], // size of the icon
+            iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
+            popupAnchor:  [0, -30] // point from which the popup should open relative to the iconAnchor
+            
+        });
+        var photoImgtamp3rm= '<img src="tamp3rm.jpg" height="200px" width="200px"/>';
+        L.marker([1.3569991314494962, 103.94003712693515], {icon: leafIcon}).addTo(map).bindPopup("<h1>3 ROOM FLAT </h1> <p> Blk 519C Tampines Central 8<br> Resale value of $560,000</br>Remaining lease of 91 years 05 months </p>"+photoImgtamp3rm);
+        
+        //<!-- 2 room -->
+          var leafIcon = L.icon({
+            iconUrl: 'greenb.png',
+            iconSize:     [32, 37], // size of the icon
+            iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
+            popupAnchor:  [0, -30] // point from which the popup should open relative to the iconAnchor
+        });
+        var photoImgtamp2rm= '<img src="tamp2rm.jpg" height="200px" width="200px"/>';
+        L.marker([1.3593408088052623, 103.95628436926425], {icon: leafIcon}).addTo(map).bindPopup("<h1>2 ROOM FLAT </h1> <p> Blk 499A Tampines Ave 9<br> Resale value of $330,000</br>Remaining lease of 91 years 01 month </p>"+photoImgtamp2rm);
+
+          //Jurong east
+           //<!-- executive  -->
+           var leafIcon = L.icon({
+            iconUrl: 'blueb.png',
+            iconSize:     [32, 37], // size of the icon
+            iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
+            popupAnchor:  [0, -30] // point from which the popup should open relative to the iconAnchor
+            
+        });
+        var photoImgjurongeastexe= '<img src="jurongeastexe.jpg" height="200px" width="200px"/>';
+        L.marker([1.3387233062795225, 103.74524316926426], {icon: leafIcon}).addTo(map).bindPopup("<h1>EXECUTIVE FLAT </h1> <p> Blk 286B Toh Guan Rd<br> Resale value of $925,000</br>Remaining lease of 76 years 01 month </p>"+photoImgjurongeastexe);
+        //<!-- 5 room-->
+        var leafIcon = L.icon({
+            iconUrl: 'purpleb.png',
+            iconSize:     [32, 37], // size of the icon
+            iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
+            popupAnchor:  [0, -30] // point from which the popup should open relative to the iconAnchor
+            
+        });
+        var photoImgjurongeast5rm= '<img src="jurongeast5rm.jpg" height="200px" width="200px"/>';
+        L.marker([1.3365499322743908, 103.74299099809959], {icon: leafIcon}).addTo(map).bindPopup("<h1>5 ROOM FLAT </h1> <p> Blk 201 Jurong East St 21<br> Resale value of $755,000</br>Remaining lease of 70 years 04 months </p>"+photoImgjurongeast5rm);
+    
+          //<!-- 4 room -->
+          var leafIcon = L.icon({
+            iconUrl: 'redb.png',
+            iconSize:     [32, 37], // size of the icon
+            iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
+            popupAnchor:  [0, -30] // point from which the popup should open relative to the iconAnchor
+            
+        });
+        var photoImgjurongeast4rm= '<img src="jurongeast4rm.jpg" height="200px" width="200px"/>';
+        L.marker([1.3222902029466304, 103.73776066926433], {icon: leafIcon}).addTo(map).bindPopup("<h1>4 ROOM FLAT </h1> <p> Blk 56 Teban Gardens Rd<br> Resale value of $600,000</br>Remaining lease of 94 years 06 months </p>"+photoImgjurongeast4rm);
+       //<!-- 3 room -->
+       var leafIcon = L.icon({
+            iconUrl: 'orangeb.png',
+            iconSize:     [32, 37], // size of the icon
+            iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
+            popupAnchor:  [0, -30] // point from which the popup should open relative to the iconAnchor
+            
+        });
+        var photoImgjurongeast3rm= '<img src="jurongeast3rm.jpg" height="200px" width="200px"/>';
+        L.marker([1.3230137289095092, 103.73911934042884], {icon: leafIcon}).addTo(map).bindPopup("<h1>3 ROOM FLAT </h1> <p> Blk 56 Teban Gardens Rd<br> Resale value of $450,000</br>Remaining lease of 94 years 07 months </p>"+photoImgjurongeast3rm);
+          //<!-- 2 room -->
+            var leafIcon = L.icon({
+            iconUrl: 'greenb.png',
+            iconSize:     [32, 37], // size of the icon
+            iconAnchor:   [16, 37], // point of the icon which will correspond to marker's location
+            popupAnchor:  [0, -30] // point from which the popup should open relative to the iconAnchor
+        });
+        var photoImg = '<img src="jurong east1.jpg" height="200px" width="200px"/>';
+        L.marker([1.3487084283298516, 103.73181849809966], {icon: leafIcon}).addTo(map).bindPopup("<h1>2 ROOM FLAT </h1> <p> Blk 372 Jurong East Street 32<br> Resale value of $300,000</br>Remaining lease of 91 years 02 months </p>"+photoImg);
+    
+      
+    </script>
+      <p><br><br>With this comparison, we can infer that the houses in Tampines cost more than in Jurong East (for example, the cost of the highest resale value of a 4rm flat in tampines cost $720,000 while a 4rm flat in Jurong cost $600,000). Also worth to mention that the highest resale flat prices in Tampines are usually located near the MRT.   <br><br> </p>
+
+   </BODY>
+</HTML>
