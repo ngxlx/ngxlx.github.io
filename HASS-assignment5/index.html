@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+p {
+                margin: auto;
+                width: 750px;
+                text-align: left;
+                text-align-last: left;
+                font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font: size 15px;
+            }
+            p0 {
+                margin: auto;
+                width: 750px;
+                text-align: center;
+                text-align-last: center;
+                font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font: size 15px;
+            }
+ p1 {
+                margin: auto;
+                width: 750px;
+                text-align: justify;
+                text-align-last: center;
+                font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 40px;
+                color: white;
+                height: 30px;
+                padding: 4px 3px 0 3px;
+              
+ 
+            }
+ p2{
+    margin: auto;
+    width: 750px;
+    text-align: justify;
+    text-align-last: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 30px;
+    color: white;
+    height: 15px;
+    padding: 4px 3px 0 3px;
+    }
+    p3{
+    margin: auto;
+    width: 750px;
+    text-align: justify;
+    text-align-last: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    color: white;
+    height: 15px;
+    padding: 4px 3px 0 3px;
+}
+p4{
+    margin: auto;
+    width: 750px;
+    text-align: justify;
+    text-align-last: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    color: white;
+    height: 15px;
+    padding: 4px 3px 0 3px;
+}
+.blue {
+  height: 130px;
+  width: 130px;
+  line-height: 130px;
+  background-color: #0D47A1  ;
+  border-radius: 70%;
+  display: inline-block;
+  opacity: 0.8;
+ 
+
+}
+.red {
+  height: 110px;
+  width: 110px;
+  line-height: 110px;
+  background-color: #C62828;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.8;
+ 
+}
+.black {
+  height: 80px;
+  width: 80px;
+  line-height: 80px;
+  background-color: #000000;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.8;
+}
+.yellow {
+  height: 60px;
+  width: 60px;
+  line-height: 60px;
+  background-color:  #FDD835  ;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.8;
+}
+#hp {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 45%;
+        }
+#my_dataviz{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 45%;
+}
+
+#piechart{
+  float: left;    
+ margin: 0 15px 0 0;
+}
+
+</style>
+</head>
+<body>
+  <!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<!-- Create a div where the graph will take place -->
+
+<h1 style="text-align:center; color:#111111;font-size:25px;"> Assignment 5 <br></h1>
+<div style="width: 100%;">
+  <div style="width: 50%; height: 500px; float: left; background: white;"> 
+    <h1 style="text-align:center; color:#111111;font-size:15px;"> Problem statement <br></h1>
+      <p>A simple visualization design to represent the numbers in order to look visually appealing. However, there are 2 design problems. The overlapping circles have no relation with each other and might be misleading to viewers. The size of the circles does not represent the values within them (e.g., 29% is smaller than 13%). 
+      </p><br>
+          <img src="Picture 1.jpg" alt="" id="hp"/>
+
+          <p> Another solution would be to use the same circle visualization design but with a hierarchical order.<br></p>
+
+          <div style="text-align:center">
+            <h1>Color Trends</h1>
+            <p1 class="blue"><strong>33%</strong></p1><br>
+            <p2 class="red"><strong>29%</strong></p2><br>
+            <p3 class="black"><strong>28%</strong></p3><br>
+            <p4 class="yellow"><strong>13%</strong></p4><br>
+          </div>
+         
+         
+  </div>
+
+    <div style="margin-left: 50%; height: 500px; background: white;"> 
+      <h1 style="text-align:center; color:#111111;font-size:15px;"> Simple solution <br></h1>
+ 
+    <P>The simplest way to represent the visualization is to use a simple barchart to represent the percentage of colors used. <br></P>
+      <P>The other 2 circles on the right side have no relation with the circles on the left so there isn't a way to include them in the same chart.  <br></P>   
+      <div id="my_dataviz"></div>
+      <p>Replacing the right circles into a pie chart to show the percentage of trends using "Only 1 or 2 colors" and "Use more than 2 colors".</p>  
+          <div id="piechart"></div>
+          
+    
+    
+      </div>
+    </div>
+
+    
+    <script>
+
+
+      // set the dimensions and margins of the graph
+      var margin = {top: 30, right: 30, bottom: 70, left: 60},
+          width = 460 - margin.left - margin.right,
+          height = 400 - margin.top - margin.bottom;
+      
+      // append the svg object to the body of the page
+      var svg = d3.select("#my_dataviz")
+        .append("svg")
+          .attr("width", width + margin.left + margin.right)
+          .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+          .attr("transform",
+                "translate(" + margin.left + "," + margin.top + ")");
+      
+      // Parse the Data
+      d3.csv("https://raw.githubusercontent.com/ngxlx/HASS-Assignment5/main/color.csv", function(data) {
+      
+        // sort data
+        data.sort(function(b, a) {
+          return a.Value - b.Value;
+        });
+      
+        // X axis
+        var x = d3.scaleBand()
+          .range([ 0, width ])
+          .domain(data.map(function(d) { return d.Color; }))
+          .padding(0.2);
+        svg.append("g")
+          .attr("transform", "translate(0," + height + ")")
+          .call(d3.axisBottom(x))
+          .selectAll("text")
+            .attr("transform", "translate(-10,0)rotate(-45)")
+            .style("text-anchor", "end");
+      
+        // Add Y axis
+        var y = d3.scaleLinear()
+          .domain([0, 100])
+          .range([ height, 0]);
+        svg.append("g")
+          .call(d3.axisLeft(y));
+  
+          
+    // color palette = one color per subgroup
+    var color = d3.scaleOrdinal()
+      .range(['#377eb8','#000000','#FF0000','#FFFF00'])
+      
+        // Bars
+        svg.selectAll("mybar")
+          .data(data)
+          .enter()
+          .append("rect")
+            .attr("x", function(d) { return x(d.Color); })
+            .attr("y", function(d) { return y(d.Percent); })
+            .attr("width", x.bandwidth())
+            .attr("height", function(d) { return height - y(d.Percent); })
+            .attr("fill", function(d) { return color(d.Color); });
+      
+      })
+
+      // Load google charts
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+// Draw the chart and set the chart values
+function drawChart() {
+  var data = google.visualization.arrayToDataTable([
+  ['Task', 'Percent'],
+  ['Only use 1 or 2 colors', 95],
+  ['Use more than 2 colors', 5]
+]);
+
+  // Optional; add a title and set the width and height of the chart
+  var options = {
+    width: 400,
+  height: 240,
+  title: 'Colors choosen',
+  colors: ['#2E4053','#616A6B']
+};
+
+  // Display the chart inside the <div> element with id="piechart"
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  chart.draw(data, options);
+}
+      </script>
+</body>
+ 
+
+</html> 
